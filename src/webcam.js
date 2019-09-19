@@ -21,6 +21,7 @@ export class Webcam {
       if (navigator.mediaDevices.getUserMedia !== undefined) {
         navigator.mediaDevices.getUserMedia({ audio: false, video: { facingMode: 'environment' } })
           .then((mediaStream) => {
+            console.log(this.webcamElement)
             if ("srcObject" in this.webcamElement) {
               this.webcamElement.srcObject = mediaStream;
               console.log('here');
@@ -33,6 +34,7 @@ export class Webcam {
             };
           });
       } else {
+        console.log('Permiso denegado');
         reject();
       }
     });

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Webcam } from '../../webcam';
 import './camera.css';
 import axios from 'axios';
+import { aframe } from 'aframe';
+import { aframeChrome } from 'aframe-chromakey-material';
 
 class Camera extends Component {
   constructor() {
@@ -22,8 +24,10 @@ class Camera extends Component {
         this.canvasElement
     );
     this.webcam.setup().catch(() => {
-        alert('Error en el acceso de tu camara');
+      alert('Error en el acceso de tu camara');
     });
+
+    
   }
 
   componentDidUpdate(prevProps){
@@ -33,10 +37,10 @@ class Camera extends Component {
   }
 
   render() {
-    const imageDisplay = this.state.capturedImage ? 
+    const imageDisplay = !this.state.captureImage ?
       <img src={this.state.capturedImage} alt="captured" width="350"/>
       :
-      <span />
+      <spam />
 
     const buttons = this.state.captured ?
       <div>
@@ -159,7 +163,7 @@ class Camera extends Component {
         alert("Todas las imágenes guardadas se han cargado en su biblioteca de medios en la nube");
       }
     }
-  }
+  } 
 }
 
 
